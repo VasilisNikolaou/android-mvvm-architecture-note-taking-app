@@ -1,4 +1,4 @@
-package com.example.notetakingapp;
+    package com.example.notetakingapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Notes");
 
         final NoteAdapter noteAdapter = new NoteAdapter();
         final RecyclerView recyclerView = findViewById(R.id.recycler_view);
