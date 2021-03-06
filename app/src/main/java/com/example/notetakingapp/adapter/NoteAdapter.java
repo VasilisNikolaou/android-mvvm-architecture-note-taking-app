@@ -18,6 +18,7 @@ import java.util.zip.Inflater;
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder> {
 
     private List<Note> notes;
+    private OnNoteClickListener onNoteClickListener;
 
     public NoteAdapter() {
         this.notes = new ArrayList<>();
@@ -60,9 +61,15 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
+
             this.titleTxtView = itemView.findViewById(R.id.text_view_title);
             this.descriptionTxtView = itemView.findViewById(R.id.text_view_description);
             this.priorityTxtView = itemView.findViewById(R.id.text_view_priority);
+
+            this.itemView.setOnClickListener(view -> {
+                int position = getAdapterPosition();
+                onNoteClickListener.onNoteClick(notes.get(position));
+            });
         }
 
         public TextView getTitleTxtView() {
@@ -77,4 +84,17 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
             return priorityTxtView;
         }
     }
+
+    public interface OnNoteClickListener {
+        void onNoteClick(Note note);
+    }
+
+    public void setOnNoteClickListener(OnNoteClickListener onNoteClickListener) {
+        this.onNoteClickListener = onNoteClickListener;
+    }
+
+    public Note getNoteAt(int position) {
+        return this.notes.get(position);
+    }
+
 }
