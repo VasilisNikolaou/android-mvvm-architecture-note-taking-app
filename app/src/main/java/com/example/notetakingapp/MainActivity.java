@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         } else {
-            Toast.makeText(this, "Note not saved", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Note not saved/updated", Toast.LENGTH_SHORT).show();
         }
     }
 
